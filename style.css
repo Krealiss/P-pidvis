@@ -1164,3 +1164,36 @@ html {
         transform: translateY(0);
     }
 }
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    padding: 0;
+    margin: 0;
+    transition: transform 0.2s;
+}
+
+.logo img {
+    height: 54px;
+    width: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+/*    background: #fff;*/
+    padding: 4px 8px;
+    transition: box-shadow 0.3s, transform 0.2s;
+}
+
+.logo:hover img {
+    box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+    transform: scale(1.07);
+}
+
+@media (max-width: 600px) {
+    .logo img {
+        height: 38px;
+        padding: 2px 4px;
+        border-radius: 8px;
+    }
+}
