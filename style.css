@@ -299,7 +299,7 @@ section {
 /*characteristics*/
 .characteristics {
     text-align: center;
-    background: url("src/images/1.jpg") no-repeat center center/cover;
+    background: url("src/images/1.webp") no-repeat center center/cover;
 }
 
     .characteristics h2 {
@@ -317,7 +317,7 @@ section {
 
 /*Advantages*/
 .advantages {
-    background: url(src/images/2.jpg) no-repeat center center/cover;
+    background: url(src/images/2.webp) no-repeat center center/cover;
 }
 
     .advantages .grid {
