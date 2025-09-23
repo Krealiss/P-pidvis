@@ -145,7 +145,7 @@ nav {
 
 /*Hero*/
 .hero {
-    background: url("src/images/Небо.png") no-repeat center center/cover;
+    background: url("src/images/Небо.webp") no-repeat center center/cover;
     color: black;
     text-align: left;
     /*    padding: 80px 0;*/
@@ -296,22 +296,6 @@ section {
         display: block;
     }
 
-@media (max-width: 700px) {
-    .about .container {
-        flex-direction: column;
-        gap: 24px;
-        text-align: center;
-    }
-
-    .about h2 {
-        text-align: center;
-        font-size: 2rem;
-    }
-
-    .about img {
-        margin: 0 auto;
-    }
-}
 /*characteristics*/
 .characteristics {
     text-align: center;
@@ -568,6 +552,7 @@ html {
         background-color: var(--primary);
         color: black;
     }
+
 @keyframes bounce {
     0%, 20%, 50%, 80%, 100% {
         transform: translateY(0);
@@ -838,12 +823,17 @@ html {
 }
 
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
     header .container {
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
         gap: 0;
+    }
+
+    .hero .product-image {
+        max-width: 280px;
+        margin: 20px auto;
     }
 
     .logo {
@@ -900,6 +890,13 @@ html {
         padding: 6px 12px;
     }
 
+    .features {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 12px;
+        font-size: 18px;
+    }
+
     .features span {
         font-size: 1rem;
         margin-right: 8px;
@@ -924,6 +921,27 @@ html {
 @media (max-width: 400px) {
     h2, .h2 {
         font-size: 1.1rem;
+    }
+
+    header .container {
+        flex-wrap: nowrap;
+    }
+
+    .contact-button {
+        display: none; /* прибираємо телефон, щоб не тиснув місце */
+    }
+
+    .hero h2 {
+        font-size: 26px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    .btn {
+        padding: 10px 18px;
+        font-size: 14px;
     }
 
     .product-image img {
@@ -1034,30 +1052,115 @@ html {
     }
 
 .footer-phone {
-/*    margin-bottom: 20px;*/
+    /*    margin-bottom: 20px;*/
 }
 
     .footer-phone a {
         display: inline-flex;
         align-items: center;
-/*        gap: 10px;*/
-/*        font-size: 1.3rem;*/
+        /*        gap: 10px;*/
+        /*        font-size: 1.3rem;*/
         color: var(--primary);
         text-decoration: none;
         font-weight: bold;
-/*        padding: 10px 20px;*/
-/*        border: 2px solid var(--primary);*/
-/*        border-radius: 30px;*/
+        /*        padding: 10px 20px;*/
+        /*        border: 2px solid var(--primary);*/
+        /*        border-radius: 30px;*/
         transition: all 0.3s ease;
     }
 
         .footer-phone a:hover {
-/*            background: var(--primary);*/
+            /*            background: var(--primary);*/
             color: white;
             transform: translateY(-3px);
-/*            box-shadow: 0 4px 12px rgba(0,0,0,0.3);*/
+            /*            box-shadow: 0 4px 12px rgba(0,0,0,0.3);*/
         }
 
     .footer-phone i {
         font-size: 0.5rem;
     }
+
+/* === BURGER / MOBILE NAV FIXES (insert at the end of style.css) === */
+
+@media (max-width: 768px) {
+    /* Темний фон меню на мобільних, видимі посилання */
+    nav#nav {
+        position: absolute;
+        top: 64px; /* під header */
+        left: 0;
+        right: 0;
+        background: var(--dark); /* замість білого полотна */
+        color: #fff;
+        flex-direction: column;
+        align-items: stretch;
+        padding: 8px 12px;
+        display: none;
+        z-index: 1001;
+        gap: 4px;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+    }
+
+        nav#nav.active {
+            display: flex;
+            animation: navShow 220ms ease-out;
+        }
+
+        /* Посилання в мобільному меню */
+        nav#nav a {
+            color: #fff; /* видимий текст */
+            padding: 12px 10px;
+            margin: 0;
+            font-size: 18px;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+        }
+
+            nav#nav a:hover {
+                color: var(--primary);
+            }
+
+    /* Бургер завжди видно поверх */
+    .burger {
+        display: flex;
+        z-index: 1002;
+        width: 36px;
+        height: 36px;
+        align-items: center;
+        justify-content: center;
+    }
+
+        .burger span {
+            width: 24px;
+            height: 3px;
+            background: #fff; /* світла лінія для темного header */
+            border-radius: 2px;
+            transition: transform 0.28s ease, opacity 0.22s ease;
+            display: block;
+        }
+
+        /* Анімація в хрестик */
+        .burger.active span:nth-child(1) {
+            transform: translateY(6px) rotate(45deg);
+        }
+
+        .burger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .burger.active span:nth-child(3) {
+            transform: translateY(-6px) rotate(-45deg);
+        }
+}
+
+/* Аккуратне появлення меню */
+@keyframes navShow {
+    from {
+        opacity: 0;
+        transform: translateY(-6px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
